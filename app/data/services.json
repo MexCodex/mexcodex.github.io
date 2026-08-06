@@ -1,0 +1,50 @@
+[
+  {
+    "name": { "es": "Desarrollo Web", "en": "Web Development" },
+    "icon": "web",
+    "description": {
+      "es": "Desarrollamos el sitio web ideal para tu negocio, proyecto o equipo. Nuestras plataformas son rápidas y responsivas, enfocadas en ofrecer una excelente experiencia de usuario y alcanzar los objetivos que buscas.",
+      "en": "We develop the ideal website for your business, project, or team. Our platforms are fast and responsive, focused on delivering an excellent user experience and reaching your goals."
+    }
+  },
+  {
+    "name": { "es": "Apps Móviles", "en": "Mobile Apps" },
+    "icon": "mobile",
+    "description": {
+      "es": "Creamos aplicaciones móviles para iOS y Android multiplataforma, con interfaces intuitivas, alto rendimiento y una experiencia de usuario excelente.",
+      "en": "We create cross-platform mobile apps for iOS and Android with intuitive interfaces, strong performance, and an excellent user experience."
+    }
+  },
+  {
+    "name": { "es": "Software a Medida", "en": "Custom Software" },
+    "icon": "custom-software",
+    "description": {
+      "es": "Desarrollamos soluciones personalizadas adaptadas a los procesos, necesidades y crecimiento de tu organización.",
+      "en": "We develop custom solutions adapted to your organization’s processes, needs, and growth."
+    }
+  },
+  {
+    "name": { "es": "Integraciones externas", "en": "External Integrations" },
+    "icon": "integrations",
+    "description": {
+      "es": "Integramos tu software con servicios y plataformas externas, como pasarelas de pago, facturación, logística, CRM, ERP y cualquier API que impulse tu operación.",
+      "en": "We integrate your software with external services and platforms such as payment gateways, invoicing, logistics, CRM, ERP, and any API that powers your operation."
+    }
+  },
+  {
+    "name": { "es": "Soporte y Mantenimiento", "en": "Support and Maintenance" },
+    "icon": "support",
+    "description": {
+      "es": "Mantenemos tus aplicaciones seguras, actualizadas y funcionando de forma óptima mediante monitoreo continuo, mantenimiento preventivo y soporte técnico oportuno.",
+      "en": "We keep your applications secure, updated, and running optimally through continuous monitoring, preventive maintenance, and timely technical support."
+    }
+  },
+  {
+    "name": { "es": "Mejoras y Actualizaciones", "en": "Improvements and Updates" },
+    "icon": "updates",
+    "description": {
+      "es": "Evolucionamos tu software base incorporando nuevas funcionalidades, optimizando el rendimiento y adaptándolo a tecnologías modernas en tendencia.",
+      "en": "We evolve your software by adding new features, optimizing performance, and adapting it to modern technology trends."
+    }
+  }
+]

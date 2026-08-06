@@ -1,0 +1,34 @@
+[
+  {
+    "kind": { "es": "Página Web", "en": "Website" },
+    "title": { "es": "Web para evento de la BUAP", "en": "BUAP Event Website" },
+    "summary": {
+      "es": "Página de presentación de un evento de computación cuántica organizado por la BUAP",
+      "en": "Landing page for a quantum computing event organized by BUAP."
+    },
+    "points": [
+      { "es": "Desarrollo de la página web.", "en": "Website development." },
+      { "es": "Desarrollo de registro de participantes", "en": "Participant registration system development." },
+      { "es": "Automatización de correos electrónicos", "en": "Email automation." }
+    ],
+    "tags": ["Web", "BUAP", "Evento", "Contacto"],
+    "ctaHref": "https://oqi-hackaton.mexcodex.com",
+    "gradient": "linear-gradient(160deg, var(--c8) 0%, #1e3957 100%)"
+  },
+  {
+    "kind": { "es": "Herramienta", "en": "Tool" },
+    "title": { "es": "Extensión para desarrolladores", "en": "Developer Extension" },
+    "summary": {
+      "es": "Extensión para que desarrolladores angloparlantes creen Curriculums en un entorno local",
+      "en": "Extension that allows English-speaking developers to create résumés locally."
+    },
+    "points": [
+      { "es": "Desarrollo de la herramienta", "en": "Tool development." },
+      { "es": "Conexión con servicio externo", "en": "Integration with an external service." },
+      { "es": "Aplicación de escritorio", "en": "Desktop application." }
+    ],
+    "tags": ["Web", "Herramienta", "Global"],
+    "ctaHref": "https://rcv-vscode.ferj.dev",
+    "gradient": "linear-gradient(160deg, var(--c8) 0%, #1e2957 100%)"
+  }
+]

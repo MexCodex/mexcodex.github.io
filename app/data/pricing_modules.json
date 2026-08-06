@@ -1,0 +1,32 @@
+[
+  {
+    "id": "menu",
+    "category": { "es": "Inventario / Menú", "en": "Inventory / Menu" },
+    "title": { "es": "Listado autónomo", "en": "Self-managed listing" },
+    "description": {
+      "es": "Organiza tu lista de servicios o productos de forma 100% autónoma y sin costos por mantenimiento.",
+      "en": "Organize your list of services or products fully on your own, with no maintenance costs."
+    },
+    "price": 49
+  },
+  {
+    "id": "bookings",
+    "category": { "es": "Operación", "en": "Operations" },
+    "title": { "es": "Reservas y citas", "en": "Bookings and appointments" },
+    "description": {
+      "es": "Permite que tus clientes hagan citas de forma autónoma y recibe notificaciones de cada una.",
+      "en": "Let your clients book appointments on their own and receive a notification for each one."
+    },
+    "price": 99
+  },
+  {
+    "id": "others",
+    "category": { "es": "Más", "en": "More" },
+    "title": { "es": "Software dedicado", "en": "Dedicated software" },
+    "description": {
+      "es": "Platica con nosotros para cotizar un software a la medida de tu operación.",
+      "en": "Talk with us to quote custom software for your operation."
+    },
+    "price": "?"
+  }
+]

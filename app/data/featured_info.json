@@ -1,0 +1,12 @@
+[
+  {
+    "image_url": "/assets/featured_info/price.jpg",
+    "title": { "es": "Precio", "en": "Price" },
+    "brief": { "es": "Los mejores precios", "en": "Best prices" },
+    "description": {
+      "es": "Los mejores precios para servicios de desarrollo de software, sin comprometer la calidad.",
+      "en": "The best prices you can get for software development services, without compromising on quality."
+    },
+    "cta_text": { "es": "Solicita una cotización", "en": "Request a quote" }
+  }
+]

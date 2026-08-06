@@ -1,0 +1,6 @@
+[
+  { "href": "#about", "label": { "es": "Nosotros", "en": "About" } },
+  { "href": "#portfolio", "label": { "es": "Proyectos", "en": "Projects" } },
+  { "href": "#pricing", "label": { "es": "Precios", "en": "Pricing" } },
+  { "href": "#services", "label": { "es": "Servicios", "en": "Services" } }
+]
