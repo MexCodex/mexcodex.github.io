@@ -40,8 +40,20 @@ export function ContactMethods() {
 
   useEffect(() => {
     const showRequiredContact = () => setShowContactError(true);
+    const resetContactMethods = () => {
+      setSelectedMethods([]);
+      setRemovingMethods([]);
+      setIsChooserOpen(false);
+      setShowContactError(false);
+    };
+
     window.addEventListener("mexcodex-contact-required", showRequiredContact);
-    return () => window.removeEventListener("mexcodex-contact-required", showRequiredContact);
+    window.addEventListener("mexcodex-contact-reset", resetContactMethods);
+
+    return () => {
+      window.removeEventListener("mexcodex-contact-required", showRequiredContact);
+      window.removeEventListener("mexcodex-contact-reset", resetContactMethods);
+    };
   }, []);
 
   const addMethod = (method: ContactMethod) => {

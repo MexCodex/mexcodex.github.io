@@ -344,6 +344,7 @@ export function HomeContent() {
                 />
               </div>
             </div>
+            <input className="contact-honeypot" name="website" type="text" tabIndex={-1} autoComplete="off" />
             <ContactMethods />
             <div className="form-group" data-required-message={t("contact.form.required")}>
               <label className="form-label" htmlFor="message">
