@@ -2,5 +2,5 @@
   { "value": "+5", "label": { "es": "Años de experiencia", "en": "Years of experience" } },
   { "value": "4.6★", "label": { "es": "Satisfacción promedio", "en": "Average satisfaction" } },
   { "value": "30%", "label": { "es": "Más barato", "en": "More affordable" } },
-  { "value": "24h", "label": { "es": "Tiempo de respuesta", "en": "Response time" } }
+  { "value": "<24h", "label": { "es": "Tiempo de respuesta", "en": "Response time" } }
 ]
