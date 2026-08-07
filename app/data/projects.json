@@ -12,7 +12,7 @@
       { "es": "Automatización de correos electrónicos", "en": "Email automation." }
     ],
     "tags": ["Web", "BUAP", "Evento", "Contacto"],
-    "ctaHref": "https://oqi-hackaton.mexcodex.com",
+    "ctaHref": "https://oqi-hackathon.mexcodex.com",
     "gradient": "linear-gradient(160deg, var(--c8) 0%, #1e3957 100%)"
   },
   {
