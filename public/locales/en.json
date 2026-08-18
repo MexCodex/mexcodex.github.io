@@ -15,6 +15,7 @@
   "notFound.kicker": "Error 404",
   "notFound.title": "This page went off the map.",
   "notFound.description": "The address does not exist, moved somewhere else, or took a path we have not programmed yet.",
+  "notFound.homeCta": "Back to home",
   "hero.label": "Software from Mexico · For everyone",
   "hero.titlePrefix": "Mex",
   "hero.titleAccent": "Codex",
@@ -96,5 +97,6 @@
   "contact.message.email": "Contact email",
   "contact.message.phone": "Contact phone",
   "contact.emailSubject": "New project: {businessName}",
+  "footer.terms": "Terms and conditions",
   "footer.copy": "© {year} MexCodex · Software for everyone"
 }

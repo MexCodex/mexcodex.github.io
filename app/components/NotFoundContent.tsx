@@ -39,12 +39,11 @@ export function NotFoundContent() {
         </p>
         <h1>{t("notFound.title")}</h1>
         <p className="not-found-description">{t("notFound.description")}</p>
+        <Link href="/" className="not-found-home-link">
+          {t("notFound.homeCta")} <span aria-hidden="true">→</span>
+        </Link>
       </section>
 
-      <p className="not-found-status" aria-hidden="true">
-        <span>ERR_PAGE_NOT_FOUND</span>
-        <span>MXC—404</span>
-      </p>
     </main>
   );
 }

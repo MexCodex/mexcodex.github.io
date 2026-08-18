@@ -15,6 +15,7 @@
   "notFound.kicker": "Error 404",
   "notFound.title": "Esta página se salió del mapa.",
   "notFound.description": "La dirección no existe, cambió de lugar o tomó un camino que todavía no hemos programado.",
+  "notFound.homeCta": "Volver al inicio",
   "hero.label": "Software de México · Para todos",
   "hero.titlePrefix": "Mex",
   "hero.titleAccent": "Codex",
@@ -96,5 +97,6 @@
   "contact.message.email": "Correo de contacto",
   "contact.message.phone": "Teléfono de contacto",
   "contact.emailSubject": "Nuevo proyecto: {businessName}",
+  "footer.terms": "Términos y condiciones",
   "footer.copy": "© {year} MexCodex · Software para todos"
 }

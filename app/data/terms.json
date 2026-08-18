@@ -1,0 +1,177 @@
+{
+  "title": {
+    "es": "Términos y condiciones",
+    "en": "Terms and conditions"
+  },
+  "intro": {
+    "es": "Estos términos regulan el uso del sitio web de MexCodex y resumen condiciones generales para consultar información, solicitar contacto o pedir una cotización. No sustituyen un contrato firmado, una cotización aceptada ni un acuerdo escrito de prestación de servicios.",
+    "en": "These terms govern use of the MexCodex website and summarize general conditions for viewing information, contacting MexCodex, or requesting a quote. They do not replace a signed contract, an accepted quote, or a written service agreement."
+  },
+  "updated": {
+    "es": "Última actualización · Agosto 2026",
+    "en": "Last updated · August 2026"
+  },
+  "readingTime": {
+    "es": "Lectura · 5 min",
+    "en": "Reading time · 5 min"
+  },
+  "backHome": {
+    "es": "Volver al inicio",
+    "en": "Back to home"
+  },
+  "sections": [
+    {
+      "id": "information",
+      "title": {
+        "es": "Información del sitio",
+        "en": "Website information"
+      },
+      "paragraphs": [
+        {
+          "es": "Este sitio presenta información general sobre MexCodex, sus servicios de software, desarrollo web, hospedaje, módulos adicionales, ejemplos de proyectos y canales de contacto.",
+          "en": "This website presents general information about MexCodex, its software services, web development, hosting, optional modules, project examples, and contact channels."
+        },
+        {
+          "es": "Los precios, descripciones, tiempos, beneficios y ejemplos publicados son referencias informativas. Por sí solos no constituyen una oferta definitiva, promesa contractual ni obligación de prestar un servicio específico.",
+          "en": "Prices, descriptions, timelines, benefits, and examples published here are informational references. By themselves, they do not create a final offer, contractual promise, or obligation to provide a specific service."
+        }
+      ]
+    },
+    {
+      "id": "contact",
+      "title": {
+        "es": "Uso del formulario y contacto",
+        "en": "Contact and form use"
+      },
+      "paragraphs": [
+        {
+          "es": "Al enviar información por el formulario, WhatsApp, correo u otro medio de contacto indicado en el sitio, se declara que la información proporcionada es veraz y que se cuenta con autorización para compartirla.",
+          "en": "When information is sent through the form, WhatsApp, email, or another contact channel shown on the site, it is represented that the information is accurate and that authorization exists to share it."
+        },
+        {
+          "es": "Los datos de contacto enviados podrán utilizarse para responder solicitudes, preparar una cotización, dar seguimiento comercial o aclarar detalles relacionados con el mensaje recibido.",
+          "en": "Submitted contact information may be used to respond to requests, prepare a quote, follow up commercially, or clarify details related to the message received."
+        }
+      ]
+    },
+    {
+      "id": "quotes",
+      "title": {
+        "es": "Cotizaciones y proyectos",
+        "en": "Quotes and projects"
+      },
+      "paragraphs": [
+        {
+          "es": "Cualquier proyecto, desarrollo, hospedaje, mantenimiento, soporte, disponibilidad, entrega, precio o alcance deberá confirmarse mediante una cotización aceptada, contrato firmado o acuerdo escrito entre las partes.",
+          "en": "Any project, development, hosting, maintenance, support, availability, delivery, price, or scope must be confirmed through an accepted quote, signed contract, or written agreement between the parties."
+        },
+        {
+          "es": "Si posteriormente existe una cotización aceptada o contrato de servicios, dicho documento prevalecerá sobre la información general publicada en este sitio.",
+          "en": "If an accepted quote or service contract later exists, that document will prevail over the general information published on this website."
+        }
+      ]
+    },
+    {
+      "id": "ip",
+      "title": {
+        "es": "Propiedad intelectual",
+        "en": "Intellectual property"
+      },
+      "paragraphs": [
+        {
+          "es": "El contenido del sitio, incluyendo textos, marca, diseño, estructura, código, elementos visuales y materiales publicados, pertenece a MexCodex o a sus licenciantes, salvo que se indique lo contrario.",
+          "en": "The website content, including text, brand assets, design, structure, code, visual elements, and published materials, belongs to MexCodex or its licensors unless otherwise stated."
+        },
+        {
+          "es": "No se permite copiar, reutilizar, distribuir, modificar o explotar el contenido del sitio sin autorización previa por escrito de MexCodex, excepto para uso personal e informativo.",
+          "en": "Website content may not be copied, reused, distributed, modified, or exploited without prior written authorization from MexCodex, except for personal and informational use."
+        }
+      ]
+    },
+    {
+      "id": "acceptableUse",
+      "title": {
+        "es": "Uso permitido",
+        "en": "Permitted use"
+      },
+      "paragraphs": [
+        {
+          "es": "Se debe usar el sitio de forma lícita y respetuosa. Está prohibido intentar acceder sin autorización, interferir con su operación, enviar spam, automatizar abusos o usarlo para actividades ilegales.",
+          "en": "The website must be used lawfully and respectfully. Unauthorized access attempts, interference with operation, spam, abusive automation, or illegal use are prohibited."
+        },
+        {
+          "es": "Podrán limitarse, bloquearse o investigarse usos que MexCodex considere abusivos, riesgosos o contrarios a estos términos, sin perjuicio de ejercer los derechos que correspondan.",
+          "en": "Use considered abusive, risky, or contrary to these terms may be limited, blocked, or investigated by MexCodex, without waiving any applicable rights."
+        }
+      ]
+    },
+    {
+      "id": "availability",
+      "title": {
+        "es": "Disponibilidad del sitio",
+        "en": "Website availability"
+      },
+      "paragraphs": [
+        {
+          "es": "El sitio público podrá actualizarse, modificarse, suspenderse o interrumpirse temporalmente por mantenimiento, mejoras, fallas técnicas, seguridad o causas fuera del control de MexCodex.",
+          "en": "The public website may be updated, modified, suspended, or temporarily interrupted for maintenance, improvements, technical issues, security, or causes outside MexCodex's control."
+        },
+        {
+          "es": "La disponibilidad del sitio público no equivale a una garantía de servicio contratado. Las garantías de disponibilidad, soporte u hospedaje solo aplican cuando exista un acuerdo específico que las establezca.",
+          "en": "Public website availability is not the same as a contracted service guarantee. Availability, support, or hosting guarantees apply only when a specific agreement establishes them."
+        }
+      ]
+    },
+    {
+      "id": "liability",
+      "title": {
+        "es": "Limitación de responsabilidad",
+        "en": "Limitation of liability"
+      },
+      "paragraphs": [
+        {
+          "es": "El uso del sitio y de la información publicada se realiza bajo responsabilidad del usuario. MexCodex procura mantener información clara y actualizada, pero no garantiza que todo contenido esté libre de errores u omisiones.",
+          "en": "Use of the website and the information published on it is at the user’s own responsibility. MexCodex aims to keep information clear and updated, but does not guarantee that all content is free from errors or omissions."
+        },
+        {
+          "es": "En la medida permitida por la ley, MexCodex no será responsable por daños indirectos, pérdida de oportunidades, interrupciones, decisiones tomadas únicamente con base en la información del sitio o uso indebido de sus canales de contacto.",
+          "en": "To the extent allowed by law, MexCodex will not be liable for indirect damages, lost opportunities, interruptions, decisions made solely based on website information, or misuse of its contact channels."
+        }
+      ]
+    },
+    {
+      "id": "privacy",
+      "title": {
+        "es": "Datos enviados por el usuario",
+        "en": "User-submitted data"
+      },
+      "paragraphs": [
+        {
+          "es": "La información que se envíe por los medios de contacto será utilizada principalmente, aunque no exclusivamente, para responder la solicitud recibida. Se debe evitar enviar información confidencial, sensible o innecesaria antes de contar con un acuerdo formal.",
+          "en": "Information sent through contact channels will mainly, though not exclusively, be used to respond to the received request. Confidential, sensitive, or unnecessary information should not be sent before a formal agreement exists."
+        },
+        {
+          "es": "Podrá conservarse información anonimizada para estadísticas privadas, mejora del servicio y análisis interno. Si una solicitud deriva en una relación de servicio, el tratamiento, entrega o conservación de información relacionada con el proyecto podrá regularse por la cotización, contrato o acuerdo correspondiente.",
+          "en": "Anonymized information may be retained for private statistics, service improvement, and internal analysis. If a request becomes a service relationship, the handling, delivery, or retention of project-related information may be governed by the corresponding quote, contract, or agreement."
+        }
+      ]
+    },
+    {
+      "id": "governing",
+      "title": {
+        "es": "Interpretación y acuerdos posteriores",
+        "en": "Interpretation and later agreements"
+      },
+      "paragraphs": [
+        {
+          "es": "Estos términos están pensados para usuarios en México y podrán interpretarse tomando como referencia la legislación aplicable y la ciudad de Puebla, Puebla, cuando resulte pertinente.",
+          "en": "These terms are intended for users in Mexico and may be interpreted with reference to applicable law and the city of Puebla, Puebla, when relevant."
+        },
+        {
+          "es": "Estos términos podrán actualizarse en cualquier momento. La versión publicada en esta página será la vigente para el uso general del sitio, salvo que exista un contrato o acuerdo escrito aplicable.",
+          "en": "These terms may be updated at any time. The version published on this page will govern general website use unless a separate contract or written agreement applies."
+        }
+      ]
+    }
+  ]
+}

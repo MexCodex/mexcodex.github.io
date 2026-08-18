@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { HeroCanvas } from "@/app/components/HeroCanvas";
 import { ContactMethods } from "@/app/components/ContactMethods";
 import { ContactSubmitActions } from "@/app/components/ContactSubmitActions";
@@ -244,10 +245,20 @@ export function HomeContent() {
                       <h4>{translateLocalized(module.title, language)}</h4>
                       <p>{translateLocalized(module.description, language)}</p>
                     </div>
-                    <div className="pricing-module-price">
-                      <span>+</span>${module.price}
-                      <span>{t("pricing.moduleMonthlySuffix")}</span>
-                    </div>
+                    {module.price === "?" ? (
+                      <button
+                        className="btn-project pricing-module-quote"
+                        type="button"
+                        onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
+                      >
+                        {t("pricing.quoteCta")}
+                      </button>
+                    ) : (
+                      <div className="pricing-module-price">
+                        <span>+</span>${module.price}
+                        <span>{t("pricing.moduleMonthlySuffix")}</span>
+                      </div>
+                    )}
                   </article>
                 ))}
               </div>
@@ -292,7 +303,9 @@ export function HomeContent() {
             </h2>
             <div className="divider" />
             <p className="contact-desc">{t("contact.description")}</p>
-            <p className="contact-desc-tyc">{t("contact.terms")}</p>
+            <p className="contact-desc-tyc">
+              <Link href="/terminos-y-condiciones">{t("contact.terms")}</Link>
+            </p>
             <div className="contact-info">
               <div className="contact-item">
                 <ContactIcon type="mail" />
@@ -366,7 +379,12 @@ export function HomeContent() {
           <div className="footer-logo">
             mex<span>codex</span>
           </div>
-          <p className="footer-copy">{t("footer.copy", { year: new Date().getFullYear() })}</p>
+          <div className="footer-meta">
+            <Link href="/terminos-y-condiciones" className="footer-terms-link">
+              {t("footer.terms")}
+            </Link>
+            <p className="footer-copy">{t("footer.copy", { year: new Date().getFullYear() })}</p>
+          </div>
         </div>
       </footer>
     </>

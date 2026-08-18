@@ -33,6 +33,11 @@ const spaceGrotesk = Space_Grotesk({
 export const metadata: Metadata = {
   title: esTranslations["metadata.title"],
   description: esTranslations["metadata.description"],
+  icons: {
+    icon: "/icon1.png",
+    shortcut: "/icon1.png",
+    apple: "/apple-icon.png",
+  },
 };
 
 export default function RootLayout({
