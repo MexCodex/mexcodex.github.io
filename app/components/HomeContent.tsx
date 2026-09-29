@@ -224,9 +224,14 @@ export function HomeContent() {
                   </li>
                 ))}
               </ul>
-              <button className="btn-plan btn-plan-solid" type="button">
+              <a
+                className="btn-plan btn-plan-solid"
+                href={`https://wa.me/522225176319?text=${encodeURIComponent(t("contact.whatsappDefaultMessage"))}`}
+                target="_blank"
+                rel="noreferrer"
+              >
                 {t("pricing.quoteCta")}
-              </button>
+              </a>
             </div>
 
             <div className="pricing-details reveal reveal-delay-1">

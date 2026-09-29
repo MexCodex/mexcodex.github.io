@@ -1213,6 +1213,10 @@ section {
 }
 
 .btn-plan {
+  display: block;
+  box-sizing: border-box;
+  text-align: center;
+  text-decoration: none;
   width: 100%;
   padding: 0.85rem;
   border-radius: 40px;
