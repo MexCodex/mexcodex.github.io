@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { BrandLogo } from "@/app/components/BrandLogo";
 import { LanguageToggle } from "@/app/components/LanguageToggle";
 import { ThemeToggle } from "@/app/components/ThemeToggle";
 import { useTranslation } from "@/app/i18n/LanguageProvider";
@@ -14,7 +15,7 @@ export function TermsContent() {
     <div className="terms-page">
       <header className="terms-header">
         <Link href="/" className="nav-logo" aria-label={t("nav.logoAria")}>
-          mex<span>codex</span>
+          <BrandLogo />
         </Link>
 
         <div className="terms-controls" aria-label={t("notFound.preferencesAria")}>

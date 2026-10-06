@@ -1,0 +1,92 @@
+{
+  "_ayuda": "Edita este archivo y corre: python marca/publicidad/plantillas/generar.py  — las imágenes salen en plantillas/salida/. Lee LEEME.md para ver todos los campos.",
+  "posts": [
+    {
+      "id": "lanzamiento",
+      "plantilla": "anuncio",
+      "formato": "cuadrado",
+      "tema": "noche",
+      "etiqueta": "Software de México · Para todos",
+      "titulo": "Tecnología accesible para el *mundo real*",
+      "texto": "Software accesible, confiable y útil para tu empresa, negocio o proyecto.",
+      "boton": "Cotiza gratis"
+    },
+    {
+      "id": "servicio-web",
+      "plantilla": "servicio",
+      "formato": "vertical",
+      "tema": "claro",
+      "icono": "web",
+      "etiqueta": "Lo que hacemos",
+      "titulo": "Desarrollo *web*",
+      "texto": "Desarrollamos el sitio web ideal para tu negocio, proyecto o equipo: rápido, responsivo y enfocado en tus objetivos.",
+      "puntos": ["Diseño personalizado", "Rápido en cualquier dispositivo", "Disponible 24/7"],
+      "boton": "mexcodex.com"
+    },
+    {
+      "id": "servicio-apps",
+      "plantilla": "servicio",
+      "formato": "cuadrado",
+      "tema": "jade",
+      "icono": "movil",
+      "etiqueta": "Lo que hacemos",
+      "titulo": "Apps *móviles*",
+      "texto": "Aplicaciones para iOS y Android con interfaces intuitivas y alto rendimiento.",
+      "puntos": ["iOS y Android", "Multiplataforma"]
+    },
+    {
+      "id": "precio-esencial",
+      "plantilla": "precio",
+      "formato": "vertical",
+      "tema": "noche",
+      "etiqueta": "Esencial",
+      "titulo": "Inversión que *tiene sentido*",
+      "antes": "A partir de",
+      "precio": "$349",
+      "periodo": "por mes / proyecto",
+      "puntos": ["Página de presentación", "Diseño personalizado", "Presenta tus productos o servicios", "Disponibilidad 24/7", "Subdominio gratuito"],
+      "boton": "Cotizar por WhatsApp"
+    },
+    {
+      "id": "dato-respuesta",
+      "plantilla": "dato",
+      "formato": "cuadrado",
+      "tema": "claro",
+      "etiqueta": "Nuestra promesa",
+      "valor": "<24h",
+      "titulo": "Tiempo de respuesta",
+      "texto": "Si no te respondemos en 24 horas, te damos 50% de descuento en tu primer año de servicio*.",
+      "nota": "*Aplican términos y condiciones en mexcodex.com"
+    },
+    {
+      "id": "frase-democratizar",
+      "plantilla": "frase",
+      "formato": "cuadrado",
+      "tema": "jade",
+      "titulo": "La tecnología no debe ser exclusiva de las *grandes empresas*.",
+      "autor": "Equipo MexCodex"
+    },
+    {
+      "id": "proyecto-buap",
+      "plantilla": "proyecto",
+      "formato": "vertical",
+      "tema": "noche",
+      "imagen": "",
+      "etiqueta": "Página web",
+      "titulo": "Web para evento de la *BUAP*",
+      "texto": "Página de presentación de un evento de computación cuántica organizado por la BUAP.",
+      "puntos": ["Desarrollo de la página web", "Registro de participantes", "Automatización de correos"],
+      "etiquetas": ["Web", "BUAP", "Evento"]
+    },
+    {
+      "id": "pasos-cotizar",
+      "plantilla": "lista",
+      "formato": "historia",
+      "tema": "claro",
+      "etiqueta": "Así de fácil",
+      "titulo": "Tu proyecto en *3 pasos*",
+      "puntos": ["Escríbenos por WhatsApp o correo", "Te enviamos una cotización a tu medida", "Desarrollamos y lanzamos tu software"],
+      "boton": "+52 (222) 517-6319"
+    }
+  ]
+}

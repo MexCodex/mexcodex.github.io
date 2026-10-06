@@ -87,6 +87,52 @@ textarea {
   color: var(--c6);
 }
 
+.nav-logo {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.brand-logo {
+  display: inline-flex;
+  align-items: center;
+}
+
+.brand-logo img {
+  display: block;
+  width: auto;
+  height: 100%;
+}
+
+.brand-logo-dark {
+  display: none !important;
+}
+
+[data-theme="dark"] .brand-logo-light {
+  display: none !important;
+}
+
+[data-theme="dark"] .brand-logo-dark {
+  display: block !important;
+}
+
+.nav-logo .brand-logo {
+  height: 3rem;
+  margin-left: -0.3rem;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 .nav-menu-toggle {
   display: none;
 }
@@ -736,6 +782,18 @@ textarea {
 
 .hero-title .accent {
   color: var(--c5);
+}
+
+.hero-title .brand-logo {
+  display: block;
+  width: clamp(18rem, 62vw, 48rem);
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.hero-title .brand-logo img {
+  width: 100%;
+  height: auto;
 }
 
 .hero-subtitle {
@@ -1989,6 +2047,11 @@ section {
   color: var(--c5);
 }
 
+.footer-logo .brand-logo {
+  height: 3rem;
+  margin-left: -0.35rem;
+}
+
 .footer-copy {
   font-size: 0.8rem;
   color: var(--c6);
@@ -2452,6 +2515,10 @@ section {
     font-size: clamp(4rem, 20vw, 7rem);
   }
 
+  .hero-title .brand-logo {
+    width: min(84vw, 26rem);
+  }
+
   .hero-btns {
     align-items: stretch;
     flex-direction: column;
@@ -2485,6 +2552,10 @@ section {
 @media (max-width: 520px) {
   .nav-logo {
     font-size: 1rem;
+  }
+
+  .nav-logo .brand-logo {
+    height: 2.1rem;
   }
 
   .project-content,

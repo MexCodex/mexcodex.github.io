@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { BrandLogo } from "@/app/components/BrandLogo";
 import { HeroCanvas } from "@/app/components/HeroCanvas";
 import { ContactMethods } from "@/app/components/ContactMethods";
 import { ContactSubmitActions } from "@/app/components/ContactSubmitActions";
@@ -106,8 +107,11 @@ export function HomeContent() {
           <div className="hero-content">
             <div className="hero-label">{t("hero.label")}</div>
             <h1 className="hero-title">
-              {t("hero.titlePrefix")}
-              <span className="accent">{t("hero.titleAccent")}</span>
+              <span className="sr-only">
+                {t("hero.titlePrefix")}
+                {t("hero.titleAccent")}
+              </span>
+              <BrandLogo variant="wordmark" tone="night" />
             </h1>
             <p className="hero-subtitle">{t("hero.subtitle")}</p>
             <div className="hero-btns">
@@ -381,8 +385,8 @@ export function HomeContent() {
         </div>
 
         <div className="footer-bar">
-          <div className="footer-logo">
-            mex<span>codex</span>
+          <div className="footer-logo" role="img" aria-label="MexCodex">
+            <BrandLogo tone="night" />
           </div>
           <div className="footer-meta">
             <Link href="/terminos-y-condiciones" className="footer-terms-link">

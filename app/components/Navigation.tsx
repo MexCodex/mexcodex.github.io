@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { BrandLogo } from "@/app/components/BrandLogo";
 import { LanguageToggle } from "@/app/components/LanguageToggle";
 import { ThemeToggle } from "@/app/components/ThemeToggle";
 import { useTranslation } from "@/app/i18n/LanguageProvider";
@@ -41,7 +42,7 @@ export default function Navbar({ navLinks }: NavbarProps) {
   return (
     <nav className={`site-nav${isMenuOpen ? " site-nav-menu-open" : ""}`} aria-label={t("nav.aria")}>
       <a href="#" className="nav-logo" aria-label={t("nav.logoAria")} onClick={closeMenu}>
-        mex<span>codex</span>
+        <BrandLogo />
       </a>
 
       <button

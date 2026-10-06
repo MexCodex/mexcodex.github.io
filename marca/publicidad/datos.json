@@ -1,0 +1,12 @@
+{
+  "marca": "MexCodex",
+  "sitio": "mexcodex.com",
+  "url": "https://mexcodex.com",
+  "correo": "contacto.mexcodex@gmail.com",
+  "telefono": "+52 (222) 517-6319",
+  "whatsapp": "522225176319",
+  "ubicacion": "Puebla, México",
+  "lema": "Software de México · Para todos",
+  "descripcion": "Software accesible, confiable y útil para tu empresa, negocio o proyecto.",
+  "servicios": ["Desarrollo web", "Apps móviles", "Software a medida", "Integraciones"]
+}
