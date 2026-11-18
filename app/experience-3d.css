@@ -1,0 +1,513 @@
+/* ════════════════════════════════════════════════════════════════════════
+   Diseño 3D de MexCodex
+
+   Gama del dispositivo (ver app/experience/experience.ts):
+
+     data-tier="best"   gama alta:  diseño 3D, todo lo que cuelga de
+                        <html data-experience="3d">
+     data-tier="nice"   gama media: la página clásica de globals.css, tal cual
+     data-tier="basic"  gama baja:  la página clásica sin animaciones
+                        (sección final)
+
+   Variables que publica Experience3D.tsx:
+     --px / --py          posición del cursor sobre el hero, de -1 a 1
+     --rx / --ry / --lift inclinación y elevación de cada tarjeta [data-tilt]
+     --mx / --my          punto de la tarjeta donde está el cursor
+   ════════════════════════════════════════════════════════════════════════ */
+
+/* ── Piezas que existen en ambas versiones ───────────────────────────── */
+.preview-glyph {
+  display: none;
+}
+
+/* ── Hero ────────────────────────────────────────────────────────────── */
+html[data-experience="3d"] #hero {
+  --px: 0;
+  --py: 0;
+  background: radial-gradient(ellipse 70% 55% at 50% 62%, #123321 0%, var(--c9) 70%);
+}
+
+/* El texto se mueve poco y en sentido contrario a la escena: da la sensación de capas */
+html[data-experience="3d"] .hero-content {
+  transform: translate3d(calc(var(--px) * -10px), calc(var(--py) * -6px), 0);
+  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* Velo oscuro detrás del texto para que la pirámide no le reste lectura */
+html[data-experience="3d"] .hero-content::before {
+  background: radial-gradient(closest-side, rgba(10, 28, 18, 0.74), rgba(10, 28, 18, 0.36) 60%, transparent);
+  content: "";
+  inset: -12% -22%;
+  pointer-events: none;
+  position: absolute;
+  z-index: -1;
+}
+
+html[data-experience="3d"] .hero-title .brand-logo {
+  filter: drop-shadow(0 1.1rem 1.6rem rgba(0, 0, 0, 0.6)) drop-shadow(0 0 1.8rem rgba(92, 143, 103, 0.35));
+  transform: perspective(900px) rotateY(calc(var(--px) * 8deg)) rotateX(calc(var(--py) * -6deg));
+  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+html[data-experience="3d"] .hero-label {
+  background: rgba(10, 28, 18, 0.6);
+}
+
+/* Indicador de scroll: un mouse con la rueda en movimiento */
+html[data-experience="3d"] .hero-scroll {
+  bottom: 2rem;
+  opacity: 1;
+}
+
+html[data-experience="3d"] .hero-scroll span {
+  display: none;
+}
+
+html[data-experience="3d"] .scroll-line {
+  animation: none;
+  background: none;
+  border: 1px solid var(--c5);
+  border-radius: 999px;
+  height: 42px;
+  position: relative;
+  width: 26px;
+}
+
+html[data-experience="3d"] .scroll-line::after {
+  animation: scrollWheel 1.8s ease-in-out infinite;
+  background: var(--c4);
+  border-radius: 999px;
+  content: "";
+  height: 8px;
+  left: 50%;
+  margin-left: -2px;
+  position: absolute;
+  top: 8px;
+  width: 4px;
+}
+
+@keyframes scrollWheel {
+  0%   { opacity: 0; transform: translateY(0); }
+  40%  { opacity: 1; }
+  100% { opacity: 0; transform: translateY(14px); }
+}
+
+/* ── Entrada de bloques: se levantan desde el fondo ──────────────────── */
+/* Usa rotate/translate (propiedades individuales) para no chocar con el
+   transform de la inclinación de las tarjetas. */
+html[data-experience="3d"] .reveal {
+  rotate: x 16deg;
+  transform: none;
+  transform-origin: 50% 100%;
+  transition:
+    opacity 0.8s ease,
+    translate 0.8s cubic-bezier(0.2, 0.8, 0.2, 1),
+    rotate 0.8s cubic-bezier(0.2, 0.8, 0.2, 1),
+    transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1),
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+  translate: 0 2.75rem -9rem;
+}
+
+html[data-experience="3d"] .reveal.visible {
+  rotate: x 0deg;
+  translate: 0 0 0;
+}
+
+html[data-experience="3d"] :is(.about-grid, .about-stats, .portfolio-grid, .pricing-grid, .pricing-modules, .services-grid) {
+  perspective: 1400px;
+}
+
+/* ── Tarjetas que se inclinan hacia el cursor ────────────────────────── */
+html[data-experience="3d"] [data-tilt]:is(*, :hover) {
+  --lift: 0;
+  --mx: 50%;
+  --my: 50%;
+  --rx: 0deg;
+  --ry: 0deg;
+  position: relative;
+  transform: rotateX(var(--rx)) rotateY(var(--ry)) translateZ(calc(var(--lift) * 20px));
+  transform-style: preserve-3d;
+}
+
+html[data-experience="3d"] [data-tilt]:not(.reveal) {
+  transition:
+    transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1),
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+html[data-experience="3d"] [data-tilt].is-tilting {
+  border-color: var(--c5);
+  box-shadow:
+    0 2.4rem 3.6rem -1.8rem rgba(10, 28, 18, 0.45),
+    0 0 2.6rem -0.9rem rgba(92, 143, 103, 0.55);
+  transition-delay: 0s;
+  transition-duration: 0.09s, 0.3s, 0.3s, 0.3s;
+  transition-property: transform, background-color, border-color, box-shadow;
+  transition-timing-function: linear, ease, ease, ease;
+}
+
+html[data-experience="3d"][data-theme="dark"] [data-tilt].is-tilting {
+  box-shadow:
+    0 2.4rem 3.6rem -1.8rem rgba(0, 0, 0, 0.8),
+    0 0 2.6rem -0.9rem rgba(117, 184, 132, 0.5);
+}
+
+/* Reflejo que sigue al cursor. La tarjeta de servicio ya usa ::after para su
+   barra inferior, así que su reflejo va en ::before. */
+html[data-experience="3d"] [data-tilt]:not(.service-card, .stat-card)::after,
+html[data-experience="3d"] .service-card[data-tilt]::before,
+html[data-experience="3d"] .stat-card[data-tilt]::after {
+  background: radial-gradient(24rem circle at var(--mx) var(--my), rgba(188, 198, 168, 0.2), transparent 62%);
+  border-radius: inherit;
+  content: "";
+  inset: 0;
+  opacity: var(--lift);
+  pointer-events: none;
+  position: absolute;
+  transition: opacity 0.4s ease;
+}
+
+/* Reposo: las tarjetas claras ganan una sombra de apoyo */
+html[data-experience="3d"] :is(.project-card, .service-card) {
+  box-shadow: 0 1.6rem 2.6rem -1.9rem rgba(10, 28, 18, 0.35);
+}
+
+html[data-experience="3d"][data-theme="dark"] :is(.project-card, .service-card, .stat-card) {
+  box-shadow: 0 1.6rem 2.6rem -1.7rem rgba(0, 0, 0, 0.75);
+}
+
+/* ── Proyectos: pirámide en capas en la portada de cada tarjeta ──────── */
+html[data-experience="3d"] .project-preview {
+  overflow: hidden;
+  perspective: 700px;
+}
+
+/* En 3D la pirámide en capas ocupa el lugar del ícono del proyecto */
+html[data-experience="3d"] .project-icon {
+  display: none;
+}
+
+html[data-experience="3d"] .preview-glyph {
+  display: block;
+  height: 6.25rem;
+  position: absolute;
+  right: 12%;
+  top: 46%;
+  transform: translateY(-50%) rotateX(60deg) rotateZ(45deg);
+  transform-style: preserve-3d;
+  width: 6.25rem;
+}
+
+html[data-experience="3d"] .preview-glyph i {
+  background: rgba(92, 143, 103, 0.22);
+  border: 1px solid rgba(234, 234, 221, 0.5);
+  position: absolute;
+  transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+html[data-experience="3d"] .preview-glyph i:nth-child(1) { inset: 0;   transform: translateZ(0); }
+html[data-experience="3d"] .preview-glyph i:nth-child(2) { inset: 17%; transform: translateZ(1rem); }
+html[data-experience="3d"] .preview-glyph i:nth-child(3) { inset: 34%; transform: translateZ(2rem); border-color: var(--c1); }
+
+html[data-experience="3d"] .project-card.is-tilting .preview-glyph i:nth-child(2) { transform: translateZ(1.6rem); }
+html[data-experience="3d"] .project-card.is-tilting .preview-glyph i:nth-child(3) { transform: translateZ(3.2rem); }
+
+/* ── Precios: el contenido se separa del fondo al inclinar ───────────── */
+html[data-experience="3d"] .pricing-card.featured:is(*, :hover) {
+  scale: 1.04;
+}
+
+html[data-experience="3d"] .pricing-card.featured {
+  box-shadow: 0 2.4rem 4rem -2rem rgba(0, 0, 0, 0.7), 0 0 3.2rem -1.2rem rgba(92, 143, 103, 0.55);
+}
+
+html[data-experience="3d"] :is(.plan-price, .pricing-module-price, .btn-plan) {
+  transform: translateZ(calc(var(--lift, 0) * 28px));
+  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.2s;
+}
+
+html[data-experience="3d"] .featured-badge {
+  transform: translateX(-50%) translateZ(calc(var(--lift, 0) * 40px));
+  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+html[data-experience="3d"] .pricing-details:hover {
+  transform: none;
+}
+
+/* ── Página 404: el número flota sobre un mapa en perspectiva ────────── */
+html[data-experience="3d"] .not-found-page {
+  --depth: #173f29;
+  --px: 0;
+  --py: 0;
+  perspective: 1100px;
+}
+
+html[data-experience="3d"][data-theme="dark"] .not-found-page {
+  --depth: #0f2417;
+}
+
+/* ── Suelo en perspectiva (404 y términos) ───────────────────────────── */
+/* La cuadrícula queda quieta. Lo único que se mueve solo es una franja de luz
+   muy suave que recorre el suelo despacio (unos 11 s), del horizonte hacia
+   quien mira, y luego descansa unos 7 s. Con el cursor, el suelo se
+   desplaza un poco hacia el lado contrario para dar profundidad. */
+html[data-experience="3d"] .not-found-grid,
+html[data-experience="3d"] .terms-hero::before {
+  --floor-line: rgba(47, 125, 75, 0.3);
+  animation: floorSweep 18s ease-in-out infinite;
+  background-image:
+    linear-gradient(to bottom, transparent, rgba(117, 184, 132, 0.14) 50%, transparent),
+    linear-gradient(var(--floor-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--floor-line) 1px, transparent 1px);
+  background-position: 0 -150%, 50% 0, 50% 0;
+  background-repeat: no-repeat, repeat, repeat;
+  background-size: 100% 60%, 4rem 4rem, 4rem 4rem;
+  bottom: -2px;
+  left: -30%;
+  right: -30%;
+  top: auto;
+  transform: perspective(520px) rotateX(66deg);
+  transform-origin: 50% 100%;
+  transition: translate 0.9s cubic-bezier(0.2, 0.8, 0.2, 1);
+  translate: calc(var(--px, 0) * -2.5rem) 0;
+}
+
+@keyframes floorSweep {
+  0%        { background-position: 0 -150%, 50% 0, 50% 0; }
+  62%, 100% { background-position: 0 250%, 50% 0, 50% 0; }
+}
+
+html[data-experience="3d"] .not-found-grid {
+  --floor-line: rgba(47, 125, 75, 0.36);
+  height: 72%;
+  mask-image: linear-gradient(to bottom, transparent, #000 50%, transparent);
+}
+
+html[data-experience="3d"] .not-found-glow {
+  transition: translate 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+  translate: calc(var(--px) * 2.4rem) calc(var(--py) * 1.6rem);
+}
+
+/* Las capas de sombra dan el canto del número; el cero y su marca flotan por delante */
+html[data-experience="3d"] .not-found-code {
+  text-shadow:
+    0.008em 0.008em 0 var(--depth),
+    0.016em 0.016em 0 var(--depth),
+    0.024em 0.024em 0 var(--depth),
+    0.032em 0.032em 0 var(--depth),
+    0.04em 0.04em 0 var(--depth),
+    0.048em 0.048em 0 var(--depth),
+    0.056em 0.056em 0 var(--depth),
+    0.1em 0.16em 0.22em rgba(4, 12, 8, 0.45);
+  transform: rotateY(calc(var(--px) * 18deg)) rotateX(calc(var(--py) * -12deg));
+  transform-style: preserve-3d;
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+html[data-experience="3d"] .not-found-zero {
+  background: rgba(47, 125, 75, 0.08);
+  box-shadow:
+    0 0 0.26em rgba(47, 125, 75, 0.45),
+    inset 0 0 0.14em rgba(47, 125, 75, 0.35);
+  transform: translateZ(70px);
+  transform-style: preserve-3d;
+}
+
+html[data-experience="3d"] .not-found-zero-mark {
+  text-shadow: none;
+  transform: translateZ(50px);
+}
+
+html[data-experience="3d"] .not-found-home-link {
+  box-shadow: 0 1.2rem 1.8rem -1rem rgba(4, 12, 8, 0.55);
+}
+
+/* ── Términos y condiciones: el documento como hojas apiladas ────────── */
+html[data-experience="3d"] .terms-hero {
+  --px: 0;
+  --py: 0;
+  isolation: isolate;
+  overflow: hidden;
+  padding-bottom: 8.5rem;
+  perspective: 1000px;
+}
+
+html[data-experience="3d"] .terms-hero::before {
+  --floor-line: rgba(92, 143, 103, 0.28);
+  content: "";
+  height: 70%;
+  mask-image: linear-gradient(to bottom, transparent, #000 60%, transparent);
+  pointer-events: none;
+  position: absolute;
+  z-index: -1;
+}
+
+html[data-experience="3d"] .terms-hero h1 {
+  text-shadow:
+    0.012em 0.012em 0 var(--c7),
+    0.024em 0.024em 0 var(--c7),
+    0.036em 0.036em 0 var(--c7),
+    0.08em 0.14em 0.3em rgba(0, 0, 0, 0.5);
+  transform: rotateY(calc(var(--px) * 7deg)) rotateX(calc(var(--py) * -6deg));
+  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* El documento se monta sobre el encabezado y entra inclinado */
+html[data-experience="3d"] .terms-article {
+  margin-top: -4.5rem;
+  padding-top: 0;
+  perspective: 1600px;
+  position: relative;
+}
+
+html[data-experience="3d"] .terms-body {
+  animation: termsSheetIn 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  box-shadow:
+    0.5rem 0.55rem 0 -1px var(--surface-secondary),
+    0.5rem 0.55rem 0 0 var(--surface-border),
+    1rem 1.1rem 0 -2px var(--surface-secondary),
+    1rem 1.1rem 0 -1px var(--surface-border),
+    0 3.2rem 4.5rem -2.2rem rgba(10, 28, 18, 0.45);
+  transform-origin: 50% 0;
+}
+
+html[data-experience="3d"][data-theme="dark"] .terms-body {
+  box-shadow:
+    0.5rem 0.55rem 0 -1px var(--surface-secondary),
+    0.5rem 0.55rem 0 0 var(--surface-border),
+    1rem 1.1rem 0 -2px var(--surface-secondary),
+    1rem 1.1rem 0 -1px var(--surface-border),
+    0 3.2rem 4.5rem -2rem rgba(0, 0, 0, 0.8);
+}
+
+/* rotate negativo: la hoja se aleja hacia abajo y nunca se proyecta más ancha que la pantalla */
+@keyframes termsSheetIn {
+  from {
+    opacity: 0;
+    rotate: x -9deg;
+    translate: 0 2.5rem -10rem;
+  }
+  to {
+    opacity: 1;
+    rotate: x 0deg;
+    translate: 0 0 0;
+  }
+}
+
+html[data-experience="3d"] .terms-section-number {
+  align-self: start;
+  background: rgba(47, 125, 75, 0.1);
+  border: 1px solid rgba(47, 125, 75, 0.28);
+  border-radius: 0.5rem;
+  box-shadow: 0 0.6rem 0.9rem -0.6rem rgba(10, 28, 18, 0.5);
+  justify-self: start;
+  padding: 0.3rem 0.5rem;
+}
+
+@keyframes termsRise {
+  from {
+    opacity: 0;
+    translate: 0 1.75rem;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    html[data-experience="3d"] .terms-section > div {
+      animation: termsRise linear both;
+      animation-range: entry 0% entry 40%;
+      animation-timeline: view();
+    }
+  }
+}
+
+@media (max-width: 700px) {
+  html[data-experience="3d"] .terms-hero {
+    padding-bottom: 6.5rem;
+  }
+
+  html[data-experience="3d"] .terms-article {
+    margin-top: -3.5rem;
+  }
+
+  html[data-experience="3d"] .terms-body {
+    box-shadow:
+      0.3rem 0.35rem 0 -1px var(--surface-secondary),
+      0.3rem 0.35rem 0 0 var(--surface-border),
+      0 2.4rem 3rem -1.8rem rgba(10, 28, 18, 0.5);
+  }
+
+  html[data-experience="3d"] .not-found-zero {
+    transform: translateZ(36px);
+  }
+}
+
+/* ── Ajustes por tamaño y tipo de puntero ────────────────────────────── */
+@media (max-width: 1024px) {
+  html[data-experience="3d"] .pricing-card.featured:is(*, :hover) {
+    scale: 1;
+  }
+}
+
+/* Sin hover (táctil): las capas de la pirámide se muestran ya separadas */
+@media (hover: none) {
+  html[data-experience="3d"] .preview-glyph i:nth-child(2) { transform: translateZ(1.4rem); }
+  html[data-experience="3d"] .preview-glyph i:nth-child(3) { transform: translateZ(2.8rem); }
+}
+
+@media (max-width: 800px) {
+  html[data-experience="3d"] .preview-glyph {
+    height: 5rem;
+    width: 5rem;
+  }
+
+  html[data-experience="3d"] .reveal {
+    translate: 0 2rem -6rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html[data-experience="3d"] .reveal {
+    rotate: none;
+    translate: none;
+  }
+
+  html[data-experience="3d"] .not-found-grid,
+  html[data-experience="3d"] .terms-hero::before,
+  html[data-experience="3d"] .terms-body,
+  html[data-experience="3d"] .scroll-line::after {
+    animation: none;
+  }
+}
+
+/* ── Gama baja: la página clásica, sin animaciones ───────────────────── */
+/* Nada se mueve: ni bucles, ni entradas al hacer scroll, ni transiciones.
+   Los cambios de color al pasar el cursor siguen, pero instantáneos. El
+   formulario de contacto no espera a que termine ninguna animación, así
+   que funciona igual. */
+html[data-tier="basic"] {
+  scroll-behavior: auto;
+}
+
+html[data-tier="basic"] *,
+html[data-tier="basic"] *::before,
+html[data-tier="basic"] *::after {
+  animation: none !important;
+  transition-delay: 0s !important;
+  transition-duration: 0s !important;
+}
+
+/* Los bloques ya están en su sitio desde el principio */
+html[data-tier="basic"] .reveal {
+  opacity: 1;
+  transform: none;
+}

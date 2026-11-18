@@ -1022,12 +1022,49 @@ section {
 }
 
 .project-preview {
-  min-height: 180px;
+  min-height: 190px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   padding: 1.25rem 1.5rem;
   position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* Textura de la portada: cuadrícula fina que se desvanece y un brillo verde en la esquina */
+.project-preview::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 82% 22%, rgba(117, 184, 132, 0.3), transparent 55%),
+    linear-gradient(rgba(224, 226, 204, 0.07) 1px, transparent 1px) 0 0 / 22px 22px,
+    linear-gradient(90deg, rgba(224, 226, 204, 0.07) 1px, transparent 1px) 0 0 / 22px 22px;
+  mask-image: linear-gradient(200deg, #000 25%, transparent 85%);
+}
+
+.project-icon {
+  position: absolute;
+  right: 1.75rem;
+  top: 50%;
+  width: 76px;
+  height: 76px;
+  fill: none;
+  stroke: rgba(224, 226, 204, 0.6);
+  stroke-width: 1.1;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  filter: drop-shadow(0 0 14px rgba(117, 184, 132, 0.45));
+  transform: translateY(-60%);
+  transition: transform 0.4s ease, stroke 0.4s ease;
+}
+
+.project-card:hover .project-icon {
+  stroke: rgba(234, 234, 221, 0.85);
+  transform: translateY(-60%) scale(1.06);
 }
 
 .project-preview::before {
@@ -1036,8 +1073,8 @@ section {
   top: 0;
   left: 0;
   right: 0;
-  height: 5px;
-  background: linear-gradient(90deg, var(--c5), var(--c6));
+  height: 4px;
+  background: linear-gradient(90deg, var(--c6), var(--c4), var(--c6));
 }
 
 .project-preview span {
@@ -1047,7 +1084,7 @@ section {
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: rgba(234, 234, 221, 0.75);
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(10, 28, 18, 0.55);
   padding: 0.28rem 0.75rem;
   border-radius: 20px;
   border: 1px solid rgba(234, 234, 221, 0.12);
@@ -1079,17 +1116,31 @@ section {
 }
 
 .project-list {
-  padding-left: 1.1rem;
+  list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
+  gap: 0.3rem;
 }
 
 .project-list li {
+  position: relative;
+  padding-left: 1.1rem;
   font-size: 0.85rem;
   font-weight: 300;
   line-height: 1.6;
   color: var(--c7);
+}
+
+/* Viñeta en rombo, como las de las grecas */
+.project-list li::before {
+  content: "";
+  position: absolute;
+  left: 0.1rem;
+  top: 0.62em;
+  width: 0.38rem;
+  height: 0.38rem;
+  background: var(--c5);
+  transform: rotate(45deg);
 }
 
 .tag-row {
@@ -1112,7 +1163,8 @@ section {
 .project-links {
   display: flex;
   margin-top: auto;
-  padding-top: 0.5rem;
+  padding-top: 1.1rem;
+  border-top: 1px solid var(--surface-border);
 }
 
 .btn-project {
@@ -2245,6 +2297,10 @@ section {
 
 [data-theme="dark"] .project-card:hover {
   box-shadow: 0 24px 64px rgba(0, 0, 0, 0.32);
+}
+
+[data-theme="dark"] .project-list li::before {
+  background: #75b884;
 }
 
 [data-theme="dark"] .tag-pill {

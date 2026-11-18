@@ -13,7 +13,8 @@
     ],
     "tags": ["Web", "BUAP", "Evento", "Contacto"],
     "ctaHref": "https://oqi-hackathon.mexcodex.com",
-    "gradient": "linear-gradient(160deg, var(--c8) 0%, #1e3957 100%)"
+    "icon": "web",
+    "gradient": "linear-gradient(150deg, #0a1c12 0%, #205736 100%)"
   },
   {
     "kind": { "es": "Herramienta", "en": "Tool" },
@@ -29,6 +30,7 @@
     ],
     "tags": ["Web", "Herramienta", "Global"],
     "ctaHref": "https://rcv-vscode.ferj.dev",
-    "gradient": "linear-gradient(160deg, var(--c8) 0%, #1e2957 100%)"
+    "icon": "tool",
+    "gradient": "linear-gradient(150deg, #0a1c12 0%, #3d4f2c 100%)"
   }
 ]

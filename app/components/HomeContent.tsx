@@ -1,10 +1,12 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import { BrandLogo } from "@/app/components/BrandLogo";
 import { HeroCanvas } from "@/app/components/HeroCanvas";
 import { ContactMethods } from "@/app/components/ContactMethods";
 import { ContactSubmitActions } from "@/app/components/ContactSubmitActions";
+import { Experience3D } from "@/app/components/Experience3D";
 import { SiteInteractions } from "@/app/components/SiteInteractions";
 import Navbar from "@/app/components/Navigation";
 import navLinks from "@/app/data/nav_links.json";
@@ -12,8 +14,15 @@ import pricingModules from "@/app/data/pricing_modules.json";
 import projects from "@/app/data/projects.json";
 import services from "@/app/data/services.json";
 import stats from "@/app/data/stats.json";
+import { useTier } from "@/app/experience/useExperience";
 import { useTranslation } from "@/app/i18n/LanguageProvider";
 import { translateLocalized, translateLocalizedArray } from "@/app/i18n/translations";
+
+// La escena del hero 3D solo se descarga en los dispositivos que la van a mostrar.
+const HeroSceneCalendar = dynamic(
+  () => import("@/app/components/HeroSceneCalendar").then((mod) => mod.HeroSceneCalendar),
+  { ssr: false },
+);
 
 const serviceIcons = {
   web: (
@@ -34,6 +43,17 @@ const serviceIcons = {
   integrations: <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />,
   support: <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />,
   updates: <path d="M18 20V10M12 20V4M6 20v-6" />,
+};
+
+// Ícono grande de la portada de cada proyecto, según su tipo (campo "icon" de projects.json)
+const projectIcons = {
+  web: (
+    <>
+      <rect x="2.5" y="4" width="19" height="16" rx="2" />
+      <path d="M2.5 8.5h19M5.5 6.25h.01M8 6.25h.01M7 12.5h6M7 15.5h10" />
+    </>
+  ),
+  tool: <path d="M8.5 7 3.5 12l5 5M15.5 7l5 5-5 5M13.5 4.5l-3 15" />,
 };
 
 const pricingFeatureKeys = [
@@ -90,6 +110,10 @@ function ContactIcon({ type }: { type: "mail" | "phone" | "pin" }) {
 
 export function HomeContent() {
   const { language, t } = useTranslation();
+  // Gama del dispositivo (ver app/experience/experience.ts):
+  // baja = página clásica sin animaciones · media = página clásica · alta = diseño 3D
+  const tier = useTier();
+  const is3D = tier === "best";
   const localizedNavLinks = navLinks.map((link) => ({
     ...link,
     label: translateLocalized(link.label, language),
@@ -98,12 +122,13 @@ export function HomeContent() {
   return (
     <>
       <SiteInteractions />
+      {is3D ? <Experience3D /> : null}
 
       <Navbar navLinks={localizedNavLinks} />
 
       <main>
         <section id="hero">
-          <HeroCanvas />
+          {is3D ? <HeroSceneCalendar /> : <HeroCanvas animate={tier !== "basic"} />}
           <div className="hero-content">
             <div className="hero-label">{t("hero.label")}</div>
             <h1 className="hero-title">
@@ -148,7 +173,7 @@ export function HomeContent() {
                 const label = translateLocalized(stat.label, language);
 
                 return (
-                  <div className="stat-card" key={stat.value}>
+                  <div className="stat-card" key={stat.value} data-tilt>
                     <div className="stat-num">{stat.value}</div>
                     <div className="stat-label">{label}</div>
                   </div>
@@ -171,9 +196,18 @@ export function HomeContent() {
               const title = translateLocalized(project.title, language);
 
               return (
-                <article className={`project-card reveal reveal-delay-${Math.min(index, 3)}`} key={project.gradient}>
+                <article className={`project-card reveal reveal-delay-${Math.min(index, 3)}`} key={project.gradient} data-tilt>
                   <div className="project-preview" style={{ background: project.gradient }}>
                     <span>{translateLocalized(project.kind, language)}</span>
+                    <svg className="project-icon" viewBox="0 0 24 24" aria-hidden="true">
+                      {projectIcons[project.icon as keyof typeof projectIcons]}
+                    </svg>
+                    {/* Pirámide en capas: solo visible en la versión 3D */}
+                    <div className="preview-glyph" aria-hidden="true">
+                      <i />
+                      <i />
+                      <i />
+                    </div>
                   </div>
                   <div className="project-content">
                     <div className="project-topline">
@@ -212,7 +246,7 @@ export function HomeContent() {
           </h2>
           <div className="divider" />
           <div className="pricing-grid">
-            <div className="pricing-card reveal reveal-delay-0  featured" key="Pro">
+            <div className="pricing-card reveal reveal-delay-0  featured" key="Pro" data-tilt>
               <div className="featured-badge">{t("pricing.badge")}</div>
               <div className="plan-name">{t("pricing.planName")}</div>
               <div className="plan-price">
@@ -248,7 +282,7 @@ export function HomeContent() {
 
               <div className="pricing-modules">
                 {pricingModules.map((module) => (
-                  <article className="pricing-module-card" key={module.id}>
+                  <article className="pricing-module-card" key={module.id} data-tilt>
                     <div>
                       <span className="pricing-module-tag">{translateLocalized(module.category, language)}</span>
                       <h4>{translateLocalized(module.title, language)}</h4>
@@ -288,7 +322,7 @@ export function HomeContent() {
               const serviceName = translateLocalized(service.name, language);
 
               return (
-                <div className={`service-card reveal reveal-delay-${Math.min(index, 3)}`} key={service.icon}>
+                <div className={`service-card reveal reveal-delay-${Math.min(index, 3)}`} key={service.icon} data-tilt>
                   <div className="service-icon">
                     <svg viewBox="0 0 24 24">{serviceIcons[service.icon as keyof typeof serviceIcons]}</svg>
                   </div>

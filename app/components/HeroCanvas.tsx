@@ -32,7 +32,11 @@ function createShape(width: number, height: number): Shape {
   };
 }
 
-export function HeroCanvas() {
+/**
+ * Hero de la página clásica: figuras de la paleta que flotan y se apartan del cursor.
+ * Con `animate` en false (gama baja) se dibuja una sola vez y queda quieto.
+ */
+export function HeroCanvas({ animate = true }: { animate?: boolean }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -123,6 +127,18 @@ export function HeroCanvas() {
       mouse.y = -9999;
     };
 
+    const drawStill = () => {
+      resize();
+      context.clearRect(0, 0, width, height);
+      shapes.forEach(drawShape);
+    };
+
+    if (!animate) {
+      drawStill();
+      window.addEventListener("resize", drawStill);
+      return () => window.removeEventListener("resize", drawStill);
+    }
+
     resize();
     loop();
     window.addEventListener("resize", resize);
@@ -135,7 +151,7 @@ export function HeroCanvas() {
       hero?.removeEventListener("mousemove", onMouseMove);
       hero?.removeEventListener("mouseleave", onMouseLeave);
     };
-  }, []);
+  }, [animate]);
 
   return <canvas ref={canvasRef} id="hero-canvas" aria-hidden="true" />;
 }

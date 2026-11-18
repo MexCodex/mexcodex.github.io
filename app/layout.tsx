@@ -2,7 +2,10 @@ import type { Metadata } from "next";
 import { DM_Sans, Syne, Antic_Slab, Space_Grotesk } from "next/font/google";
 import { LanguageProvider } from "@/app/i18n/LanguageProvider";
 import esTranslations from "@/public/locales/es.json";
+import { DevTools } from "@/app/experience/DevTools";
+import { experienceScript } from "@/app/experience/experience";
 import "./globals.css";
+import "./experience-3d.css";
 
 const syne = Syne({
   variable: "--font-syne",
@@ -58,9 +61,12 @@ export default function RootLayout({
             __html: `(function(){try{var t=localStorage.getItem('mexcodex-theme');if(t!=='light'&&t!=='dark'){t='dark'}document.documentElement.dataset.theme=t;document.documentElement.style.colorScheme=t}catch(e){document.documentElement.dataset.theme='dark';document.documentElement.style.colorScheme='dark'}})()`,
           }}
         />
+        {/* Detecta la gama del dispositivo (baja, media o alta) antes del primer pintado */}
+        <script dangerouslySetInnerHTML={{ __html: experienceScript }} />
       </head>
       <body className="min-h-full flex flex-col">
         <LanguageProvider>{children}</LanguageProvider>
+        <DevTools />
       </body>
     </html>
   );

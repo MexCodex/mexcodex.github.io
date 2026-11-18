@@ -2,15 +2,20 @@
 
 import Link from "next/link";
 import { BrandLogo } from "@/app/components/BrandLogo";
+import { Experience3D } from "@/app/components/Experience3D";
 import { LanguageToggle } from "@/app/components/LanguageToggle";
 import { ThemeToggle } from "@/app/components/ThemeToggle";
+import { useTier } from "@/app/experience/useExperience";
 import { useTranslation } from "@/app/i18n/LanguageProvider";
 
 export function NotFoundContent() {
   const { t } = useTranslation();
+  // El seguimiento del cursor es solo para gama alta
+  const animate = useTier() === "best";
 
   return (
-    <main className="not-found-page">
+    <main className="not-found-page" data-parallax>
+      {animate ? <Experience3D /> : null}
       <header className="not-found-header">
         <Link href="/" className="nav-logo" aria-label={t("nav.logoAria")}>
           <BrandLogo />
